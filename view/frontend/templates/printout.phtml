@@ -7,3 +7,9 @@ $product = $this->getProduct();
 /**
  * @todo overwrite in custom theme
  */
+
+?>
+
+<h1><?php echo $product->getName(); ?></h1>
+
+<img src="<?php echo $block->getUrl('pub/media/catalog') . 'product/' . $product->getImage(); ?>">

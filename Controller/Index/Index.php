@@ -9,6 +9,7 @@
 namespace LCB\ProductPrintouts\Controller\Index;
 
 use \Dompdf\Dompdf;
+use \Dompdf\Options;
 
 class Index extends \Magento\Framework\App\Action\Action {
 
@@ -73,7 +74,9 @@ class Index extends \Magento\Framework\App\Action\Action {
                 ->toHtml();
         $fileName = $product->getName();
 
-        $domPdf = new Dompdf();
+	$options = new \Dompdf\Options();
+	$options->set('isRemoteEnabled', true);
+	$domPdf = new Dompdf($options);
         $domPdf->loadHtml($html);
         $domPdf->setPaper('A4', 'portrait');
         $domPdf->render();
